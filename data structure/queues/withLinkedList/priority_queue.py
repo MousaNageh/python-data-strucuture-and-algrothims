@@ -3,6 +3,8 @@ class QueueNode:
         self.entry = entry 
         self.next =  next 
         self.priority = priority
+    def __str__(self) -> str:
+        return f"priority:{self.priority},value:{self.entry}"
     
 
 class Queue():
@@ -26,32 +28,49 @@ class Queue():
             self.front = node 
             self.rear = node 
         else:
-            self.rear.next = node  
-            self.rear = self.rear.next 
+            if node.priority >= self.front.priority:
+                node.next = self.front 
+                self.front = node 
+            else:
+                front = self.front 
+                while front and node.priority < front.priority:
+                    front = front.next
+                if not front :
+                    self.rear.next =node  
+                    self.rear = self.rear.next 
+                else :
+                    node.next = front.next 
+                    front.next = node
         self.size +=1 
     
     def dequeue(self):
         if self.isEmpty():
             raise Exception("queue is empty .")
         value = self.front.entry 
-        node  = self.front 
+        front = self.front 
         self.front = self.front.next 
         self.size -=1 
-        del node 
+        del front 
         return value 
     
     def traverse(self,traverse_fun):
         front = self.front  
-        while front is not None:
+        while front :
             traverse_fun(front.entry)
             front = front.next 
+            
     
     def clear(self):
-        while self.front is not None:
+        while self.front:
             self.rear = self.front.next 
             del self.front 
             self.front = self.rear 
         self.size = 0 
 
 myqueue = Queue()
-
+myqueue.enqueue(value=4,priority=5)
+myqueue.enqueue(value=10,priority=10)
+myqueue.enqueue(value=3,priority=3)
+myqueue.enqueue(value=2,priority=2)
+myqueue.enqueue(value=20,priority=20)
+myqueue.clear()
