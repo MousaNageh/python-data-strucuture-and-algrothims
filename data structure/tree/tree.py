@@ -18,7 +18,8 @@ class TreeNode :
                 else :
                     self.right.inorderInsert(val)
         else :
-            self.data = val 
+            self.data = val
+
     def insertWithoutRec(self,val):
         temp = self 
         if not temp.data :
