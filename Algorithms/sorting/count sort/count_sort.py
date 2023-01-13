@@ -40,8 +40,7 @@ def count_sort(arr):
 
 print(count_sort([2,4,5,3,9,1,10,9,2,3,5]))
 
-def count_sort_string(arr):
-    largest_value =256 
+def count_sort_string(arr): 
     # create count array with length of largest values
     count = [0 for i in range(256)]
     output = ["" for i in range(len(arr))]
