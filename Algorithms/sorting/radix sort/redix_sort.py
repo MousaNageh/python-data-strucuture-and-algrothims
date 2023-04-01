@@ -43,7 +43,7 @@ class RedixSort:
             lists = [*lists,*self.digit_lists[i]] 
         self.arr = lists
     
-    
+
     def __sort(self):
         for i in range(self.max_digits):
             for item in self.arr:
@@ -55,6 +55,6 @@ class RedixSort:
 
 
     
-    
-sort = RedixSort([464,45646456,1,435,765,222222])
+arr =[464,45646456,1,435,765,222222]
+sort = RedixSort(arr)
 print(sort.arr)

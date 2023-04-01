@@ -1,11 +1,10 @@
 #**************** recursion  ********************* 
-
-import math
+# O(log n) 
 
 
 def recBinarySearch(val,arr,start,end):
     if start <= end :
-        middle = math.floor( (start+end) / 2)
+        middle =  (start+end) // 2
         if arr[middle] == val: 
             return middle
         elif arr[middle] > val :
@@ -26,7 +25,6 @@ def iteravtiveBinarySearch(val,arr):
     middle = None
     while start <= end :
         middle = (start+end) // 2 
-        print(middle)
         if arr[middle] == val :
             return middle 
         elif arr[middle] > val :
